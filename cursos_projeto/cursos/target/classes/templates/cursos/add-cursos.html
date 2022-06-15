@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org//1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+
+        <title>Formulário</title>
+  
+
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <form action="#" th:action="@{/cursos/cadastrar}" th:object="${curso}" method="post">
+                <label for="nomecurso">Nome: </label>
+                <input type="text" th:field="*{nomecurso}" id="nomecurso" placeholder="Nome_curso">
+                <span th:if="${#fields.hasErrors('nomecurso')}" th:errors="*{nomecurso}"></span>
+                
+                <label for="cargahoraria">Carga Horária: </label>
+                <input type="text" th:field="*{cargahoraria}" id="cargahoraria" placeholder="Carga_horária">
+                <span th:if="${#fields.hasErrors('cargahoraria')}" th:errors="*{cargahoraria}"></span>
+                
+                <label for="data_inicio">Data de início: </label>
+                <input type="date" th:field="*{dtinicio}" id="dtinicio" placeholder="mm/dd/aaaa">
+                <span th:if="${#fields.hasErrors('dtinicio')}" th:errors="*{dtinicio}"></span>
+                
+                <!--Botão de submit irá finalizar o método post, retornando os valores para o CursosController-->
+                <input class="btn btn-primary" type="submit" value="Cadastrar Curso">
+                <p >&copy; 2017–2022</p>
+            </form>
+        </section>
+    </body>
+</html>
